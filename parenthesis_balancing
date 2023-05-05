@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string x="({[]}){}([])()";
+    string s;
+    int l=x.length();
+    
+    if(l%2==0)
+    {
+       for(int i=0;i<l;i++)
+       {
+           if(x[i]=='[')
+           {
+               s.push_back(x[i]);
+           }
+           else if(x[i]=='(')
+           {
+               s.push_back(x[i]);
+           }
+           else if(x[i]=='{')
+           {
+               s.push_back(x[i]);
+           }
+           else if(x[i]==']')
+           {
+               if(s.back()=='[')
+               {
+                   s.pop_back();
+               }
+               else
+               cout<<"not balanced!";
+               break;
+           }
+           else if(x[i]==')')
+           {
+               if(s.back()=='(')
+               {
+                   s.pop_back();
+               }
+               else
+               cout<<"not balanced!";
+               break;
+           }
+           else if(x[i]=='}')
+           {
+               if(s.back()=='{')
+               {
+                   s.pop_back();
+               }
+               else
+               cout<<"not balanced!";
+               break;
+           }
+       }
+       
+       if(s.empty())
+       {
+           cout<<"bacalnced!";
+       }
+       else
+       cout<<"balanced!";
+    }
+    else
+    {
+        cout<<"balanced!";
+    }
+
+    return 0;
+}
